@@ -1,0 +1,37 @@
+﻿@using UniversityManagementSystemWebApp.Models
+@model System.Collections.Generic.List<UniversityManagementSystemWebApp.Models.Department>
+@{
+    ViewBag.Title = "Department Details";
+
+}
+
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <br />
+        <h2 class="text-center">Departments</h2>
+        <hr />
+        <table id="example" class="display" style="width:100%">
+
+            <thead>
+                <tr>
+                    <th>Department Code</th>
+                    <th>Department Name</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (Department aDepartment in Model)
+                {
+                    <tr>
+                        <td>@aDepartment.Code</td>
+                        <td>@aDepartment.Name</td>
+                    </tr>
+                }
+            </tbody>
+
+
+        </table>
+    </div>
+}

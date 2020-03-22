@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Unallocat All Class";
+}
+
+
+<div class="form-horizontal  main-center">
+
+    <div class="form-group">
+        <h2>Unallocat All Class Rooms</h2>
+        <hr />
+    </div>
+
+
+    <!--Name , Action, Controller-->
+    @Html.ActionLink("Unallocate All ClassRooms", "UnAllocatClass", "UnAllocateAllClassRoom", new {confirm = true},
+                new { onclick = "return confirm('Are you sure to Unallocat All Class?')", @class = "btn btn-default" })
+    <br /><br />
+    @if (ViewBag.Message != null)
+    {
+        <div>
+            <label class="form-group input-group alert alert-info">@ViewBag.Message</label>
+            <br />
+        </div>
+
+    }
+</div>

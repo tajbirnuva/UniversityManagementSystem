@@ -1,0 +1,200 @@
+﻿@using System
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/Ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="~/Content/dist/css/AdminLTE.css" rel="stylesheet" />
+    <link href="~/Content/dist/css/skins/skin-green.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <style>
+        .main-login {
+            background-color: #fff;
+            /* shadows and rounded borders */
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .main-center {
+            margin-top: 30px;
+            margin: 0 auto;
+            max-width: 550px;
+            padding: 60px 40px;
+        }
+
+        input[readonly].readonly {
+            background-color: transparent;
+            -webkit-box-shadow: none;
+            -ms-box-shadow: none;
+            box-shadow: none;
+        }
+
+        hr {
+            border-top: 1px dashed #8c8b8b;
+        }
+    </style>
+
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+   
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("University Management System", "HomePage", "HomePage", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Department</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li> @Html.ActionLink("Department Save", "SaveDepartments", "Department")</li>
+                            <li> @Html.ActionLink("Department Details", "DepartmentDetails", "Department")</li>
+                        </ul>
+                    </li>
+
+
+                    <li class="dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Course</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li> @Html.ActionLink("Save Course", "SaveCourse", "Course")</li>
+                            <li> @Html.ActionLink("Course Statics", "CourseStatics", "Course")</li>
+                        </ul>
+                    </li>
+
+
+
+                    <li class="dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Teacher</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li> @Html.ActionLink("Save Teacher", "SaveTeacher", "Teacher")</li>
+                            <li> @Html.ActionLink("Assign Course", "AssignCourse", "Teacher")</li>
+                        </ul>
+                    </li>
+
+
+                    <li class="dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Student</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li> @Html.ActionLink("Regster Student", "Register", "Student")</li>
+                            <li> @Html.ActionLink("Enroll Course", "Enroll", "EnrollCourse")</li>
+                        </ul>
+                    </li>
+
+
+                    <li class="dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class Room</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li> @Html.ActionLink("Allocate Classrooms", "Save", "AllocateClassRoom")</li>
+                            <li> @Html.ActionLink("Classroom's Schedule", "ViewClassShedule", "AllocateClassRoom")</li>
+                        </ul>
+                    </li>
+
+
+                    <li class="dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Result</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li> @Html.ActionLink("Save Result", "SaveResult", "StudentResult")</li>
+                            <li> @Html.ActionLink("Result Statics", "Result", "Student")</li>
+                        </ul>
+                    </li>
+
+
+                    <li class="dropdown ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Maintain</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li> @Html.ActionLink("Classrooms Unallocate", "UnAllocatClass", "UnAllocateAllClassRoom")</li>
+                            <li> @Html.ActionLink("Courses Unassign", "UnAssignCourse", "UnassignAllCourses")</li>
+                        </ul>
+                    </li>
+
+
+
+
+
+
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <h3><p>&copy;Team Revolutionist</p></h3>
+        </footer>
+    </div>
+
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/dist/js/adminlte.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+
+
+
+
+
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+
+
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+        $('#Date').datepicker({
+            format: 'dd/mm/yyyy',
+            weekStart: 6,
+            todayBtn: "linked",
+            clearBtn: true,
+            daysOfWeekHighlighted: "5",
+            autoclose: true,
+            todayHighlight: true
+        });
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>

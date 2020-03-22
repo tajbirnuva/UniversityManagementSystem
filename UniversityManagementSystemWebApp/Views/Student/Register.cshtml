@@ -1,0 +1,172 @@
+﻿@using System.Collections.Generic
+@using UniversityManagementSystemWebApp.Models
+@using UniversityManagementSystemWebApp.Models.ViewModel
+@model  Student
+
+@{
+
+    ViewBag.Title = "Register Student";
+    List<Department> Departments = ViewBag.Departments;
+    var StudentDetails = ViewBag.StudentDetails;
+
+
+}
+
+
+
+@using (Html.BeginForm("Register", "Student", FormMethod.Post, new { id = "studentRegistrationform", @class = "form-horizontal  main-center" }))
+{
+    <div class="form-group">
+        <h2>Register Student</h2>
+        <hr />
+    </div>
+
+
+
+
+
+    <div class="form-group">
+
+  <h3><label for="StudentName" class="cols-sm-2 control-label">Student Name</label></h3>     
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+            @Html.TextBoxFor(x => x.StudentName, new { @class = "form-control", placeholder = "Enter Student Name" })
+        </div>
+        <div class="input-group">
+            @Html.ValidationMessageFor(x => x.StudentName, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <h3><label for="ContactNo" class="cols-sm-2 control-label">Contact No</label></h3>       
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+            @Html.TextBoxFor(x => x.ContactNo, new { @class = "form-control", placeholder = "Enter Contact No" })
+
+        </div>
+        <div class="input-group">
+            @Html.ValidationMessageFor(x => x.ContactNo, null, new { @class = "text-danger" })
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+        <h3><label for="Email" class="cols-sm-2 control-label">Email</label></h3>     
+
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "Enter Email" })
+
+        </div>
+        <div class="input-group">
+            @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <h3><label for="Address" class="cols-sm-2 control-label">Address</label></h3>         
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-address-card" aria-hidden="true"></i></span>
+            @Html.TextBoxFor(x => x.Address, new { @class = "form-control", placeholder = "Enter Address" })
+
+        </div>
+        <div class="input-group">
+            @Html.ValidationMessageFor(x => x.Address, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <h3><label for="Date" class="cols-sm-2 control-label">Date</label></h3>        
+        @*  <input type='text' class="col-md-10" id='Date' name="Date"/>*@
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+            @Html.TextBoxFor(x => x.Date, new { @class = "form-control", placeholder = "Select Date" })
+
+        </div>
+        <div class="input-group">
+            @Html.ValidationMessageFor(x => x.Date, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h3><label for="DepartmentId" class="cols-sm-2 control-label">Department</label></h3>      
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-building-o" aria-hidden="true"></i></span>
+            @Html.DropDownListFor(x => x.DepartmentId, new SelectList(Departments, "DeptId", "Code"), "---Select a Department---", new { @class = "form-control" })
+        </div>
+        <div class="input-group">
+            @Html.ValidationMessageFor(x => x.DepartmentId, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group control-label">
+        <button class="btn btn-default input-group" type="submit">Register</button>
+    </div>
+    <br />
+    if (ViewBag.Message != null)
+    {
+        <div>
+            <label class="form-group input-group alert alert-info">@ViewBag.Message</label>
+            <br />
+        </div>
+
+    }
+
+}
+
+@if (ViewBag.Message != null && ViewBag.Message.Equals("Save Successful"))
+{
+    <hr />
+    <div class="container">
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="bg-green-active">
+                <tr>
+                    <th>Student Name</th>
+                    <th>Registration No</th>
+                    <th>Department</th>
+                    <th>Email Address</th>
+                    <th>Contact No.</th>
+                    <th>Address</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>@StudentDetails.StudentName</td>
+                    <td>@StudentDetails.StudentRegNo</td>
+                    <td>@StudentDetails.StudentDeptCode</td>
+                    <td>@StudentDetails.StudentEmail</td>
+                    <td>@StudentDetails.StudntContactNo</td>
+                    <td>@StudentDetails.StudentAddress</td>
+
+
+
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+
+}
+
+
+
+
+
+
+
+
